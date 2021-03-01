@@ -1,9 +1,11 @@
-
+import React from 'react';
 
 export default function SobreNos(){
-    <div>
-        <h1>
-            Oi
-        </h1>
-    </div>
+    return(
+        <div>
+            <h1>
+                vou tomar banho
+            </h1>
+        </div>
+    )
 }
