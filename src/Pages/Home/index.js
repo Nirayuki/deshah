@@ -2,6 +2,7 @@ import React from 'react';
 import '../../styles/home.css';
 
 
+
 export default function Home() {
     return (
         <div className="Homecontainer">
@@ -17,7 +18,6 @@ export default function Home() {
                     </div>
 
                     <div className="rank">
-
                     </div>
                 </div>
             </div>
