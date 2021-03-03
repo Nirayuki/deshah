@@ -1,34 +1,57 @@
 import React from 'react';
 import '../styles/header.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
-export default function Header(){
-    return(
-        <div className="header">
-            <div className="inner_header">
-                <div className="logo_container">
-                    <h1>Deshah</h1>
-                </div>
+export default function Header() {
 
-                <ul className="navigation">
-                    <Link to="/">
-                     <a><li>Home</li></a>
-                    </Link>
+return (
+    <>
+        <nav>
+            <nav className="logo_container">
+                <h1>Deshah</h1>
+            </nav>
 
-                    <Link to="/logar">
-                    <a><li>Login</li></a>
-                    </Link>
+            <ul className="navigation">
+                <Link to="/">
+                    <li>
+                        <a href="#">
+                            Home
+                            </a>
+                    </li>
+                </Link>
 
-                    <Link to="/registrar">
-                    <a><li>Register</li></a>
-                    </Link>
+                <Link to="/logar">
+                    <li>
+                        <a href="#">
+                            Login
+                            </a>
+                    </li>
+                </Link>
 
-                    <Link to="/sobre">
-                    <a><li>About</li></a>
-                    </Link>
-                </ul>
+                <Link to="/registrar">
+                    <li>
+                        <a href="#">
+                            Register
+                            </a>
+                    </li>
+                </Link>
+
+                <Link to="/sobre">
+                    <li>
+                        <a href="#">
+                            About
+                            </a>
+                    </li>
+                </Link>
+            </ul>
+            <div className="burger">
+                <div className="line1"></div>
+                <div className="line2"></div>
+                <div className="line3"></div>
             </div>
-        </div>
-    )
+        </nav>
+    </>
+)
+
 }

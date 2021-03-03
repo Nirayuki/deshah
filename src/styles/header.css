@@ -1,49 +1,78 @@
-.header{
-    height: 60px;
-    width: 100%;
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
     background-color: #202024;
-    display: block;
-}
-.inner_header{
-    width: 90%;
-    height: 100%;
-    display: block;
-    margin: 0 auto;
+    
 }
 
 .logo_container{
-    height: 100%;
-    display: table;
-    float: left;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 20px;
 }
 
-.logo_container h1{
-    height: 100%;
-    display: table-cell;
-    vertical-align: middle;
-    font-size: 32px;
-}
+
 
 .navigation{
-    float: right;
-    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
 }
 
 .navigation a{
-    height: 100%;
-    display: table;
-    float: left;
-    padding: 0px 20px;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-size: 14px;
 }
-
-.navigation a:last-child{
-    padding-right: 0;
-}
-
 
 .navigation a li{
-    display: table-cell;
-    vertical-align: middle;
-    height: 100%;
-    font-size: 16px;
+    list-style: none;
 }
+
+.burger{
+    display: none;
+    cursor: pointer;
+}
+
+.burger div{
+    width: 25px;
+    background-color: #FFF;
+    height: 3px;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 1024px){
+    .navigation{
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 768px){
+    body{
+        overflow-x: hidden;
+    }
+    .navigation{
+        position: absolute;
+        right: 0px;
+        height: 92vh;
+        width: 35%;
+        top: 8vh;
+        background-color: #202024;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.3s ease-in;
+    }
+    .navigation li{
+        opacity: 0;
+    }
+    .burger{
+        display: block;
+    }
+}
+
+
+
