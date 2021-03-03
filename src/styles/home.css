@@ -1,0 +1,46 @@
+.Homecontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 1000px;
+    margin-top: 30px;
+}
+
+.home_container{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+.bemvindo_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 20px;
+}
+
+.rank_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    
+}
+
+.title{
+    margin-top: 100px;
+}
+
+.rank {
+    width: 50%;
+    height: 100%;
+    background-color: #202024;
+    margin-top: 20px;
+    border-radius: 10px;
+}
