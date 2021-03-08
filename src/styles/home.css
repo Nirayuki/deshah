@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     height: 100vh;
+    width: 100vw;
     max-width: 100%;
     margin-top: 30px;
 }
@@ -52,4 +53,21 @@
     background-color: #202024;
     margin-top: 20px;
     border-radius: 10px;
+}
+
+
+@media screen and (max-width: 720px){
+    
+    .rank{
+        width: 20em;
+    }
+
+    .title{
+        width: 20em;
+    }
+
+    .bemvindo_container p{
+        display: none;
+    }
+    
 }
