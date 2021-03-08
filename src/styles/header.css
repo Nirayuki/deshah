@@ -21,15 +21,12 @@ nav{
     width: 30%;
 }
 
-.navigation a{
+#nav{
     text-decoration: none;
     letter-spacing: 3px;
     font-size: 1em;
 }
 
-.navigation a li{
-    list-style: none;
-}
 
 .burger{
     display: none;
@@ -51,16 +48,19 @@ nav{
 }
 
 @media screen and (max-width: 768px){
-    body{
-        overflow-x: hidden;
-    }
+    
 
     .logo_container{
         display: none;
     }
 
-    .navigation a{
-        font-size: 1em;
+    #nav{
+        font-size: 0.8em;
+    }
+
+
+    .navigation{
+        width: 100%;
     }
 }
 

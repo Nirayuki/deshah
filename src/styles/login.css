@@ -1,11 +1,23 @@
-.login_container{
-    max-width: 100%;
+.Logincontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+    margin-top: 30px;
+}
+
+
+.login_container{
+    max-width: 100vw;
+    height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 
-form{
+.login{
     background-color: #202024;
     width: 40em;
     height: 35vh;
@@ -52,4 +64,23 @@ form{
 #login button:hover{
     border: 1px solid #FFF;
     color: #FFF;
+}
+
+@media screen and (max-width: 720px){
+    
+    .login{
+        width: 20em;
+    }
+
+    #login input{
+        width: 15em;
+    }
+
+    #login button{
+        width: 15em;
+    }
+
+    #login input:hover{
+        background: transparent;
+    }
 }

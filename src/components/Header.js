@@ -13,36 +13,20 @@ return (
             </nav>
 
             <ul className="navigation">
-                <Link to="/">
-                    <li>
-                        <a href="#">
-                            Home
-                            </a>
-                    </li>
+                <Link to="/" id="nav">
+                    Home
                 </Link>
 
-                <Link to="/logar">
-                    <li>
-                        <a href="#">
-                            Login
-                            </a>
-                    </li>
+                <Link to="/logar" id="nav">
+                    Login
                 </Link>
 
-                <Link to="/registrar">
-                    <li>
-                        <a href="#">
-                            Register
-                            </a>
-                    </li>
+                <Link to="/registrar" id="nav">
+                    Register
                 </Link>
 
-                <Link to="/sobre">
-                    <li>
-                        <a href="#">
-                            About
-                            </a>
-                    </li>
+                <Link to="/sobre" id="nav">
+                    About
                 </Link>
             </ul>
         </nav>

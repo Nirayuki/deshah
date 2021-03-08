@@ -57,3 +57,23 @@ form{
     border: 1px solid #FFF;
     color: #FFF;
 }
+
+
+@media screen and (max-width: 720px){
+    
+    #register{
+        width: 20em;
+    }
+
+    #register input{
+        width: 15em;
+    }
+
+    #register button{
+        width: 15em;
+    }
+
+    #register input:hover{
+        background: transparent;
+    }
+}
