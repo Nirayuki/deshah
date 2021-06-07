@@ -2,6 +2,53 @@
     height: 91vh;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    background-color: aqua;
+}
+
+.teste{
+    width: 50px;
+    height: 20vh;
+    background-color: antiquewhite;
+}
+
+.center_container{
+    width: 50%;
+    height: 70%;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login{
+    display: flex;
+    flex-direction: column;
+    background-color: aquamarine;
+    width: 20vw;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#login input{
+    width: 100%;
+    height: 3vh;
+
+}
+
+#login button{
+    width: 100%;
+    height: 3vh;
+    margin-top: 15px;
+}
+
+#email{
+    margin-bottom: 15px;
+}
+
+#password{
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
