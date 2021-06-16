@@ -46,7 +46,7 @@ export default function CustomAutentic() {
                 Autenticação
             </Typography>
             <p component="h2" variant="h2" style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingBottom: '0px' }}>
-                prencha abaixo com sua
+                preencha abaixo com sua
             </p>
             <p component="h2" variant="h3" style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingBottom: '0px' }}>
                 resposta de segurança
