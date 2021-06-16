@@ -3,103 +3,127 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { useRouter } from 'next/router';
+import { useTheme } from '@material-ui/core/styles';
+import RegisterController from '../../controllers/RegisterController';
+import Container from '../Container';
+import axios from 'axios';
 
-const useStyles = makeStyles((theme) => ({
-    paper: {
-        marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(1),
-    },
-    submit: {
-        margin: theme.spacing(3, 0, 2),
-        height: theme.spacing(6),
-    },
-}));
+
+const inputs = [
+    { id: 0, label: "Nome de usuario", name: "usuario" },
+    { id: 1, label: "Senha", name: "senha", type: "password" },
+    { id: 2, label: "Email Adress", name: "email", type: "email" },
+]
+
+const initialValue = {
+    usuario: '',
+    senha: '',
+    email: '',
+}
 
 export default function CustomRegister() {
+    const router = useRouter();
+    const theme = useTheme();
+    
+    const [formData, setFormData] = React.useState(initialValue);
 
-    const classes = useStyles();
+    console.log(formData)
+
+    const handleChange = (ev) => {
+        const { name, value } = ev.target
+
+        setFormData({ ...formData, [name]: value });
+        console.log()
+    }
+
+    function onSubmit(ev) {
+        ev.preventDefault();
+
+        axios.post('http://localhost:3001/registro', formData)
+            .then((response) => {
+                console.log(response)
+                // router.push('/', response);
+            });
+    }
 
     return (
-        <Grid xs={12} sm={7}>
-            <Typography component="h1" variant="h5" style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingBottom: '20px' }}>
-                Registrar
-            </Typography>
-            <form className={classes.form} noValidate>
-                <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="usuario"
-                    label="Nome de usuario"
-                    name="usuario"
-                    autoFocus
-                />
-                <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="email"
-                    label="Email Adress"
-                    type="email"
-                    id="email"
-                    autoComplete="email"
-                />
-                <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="repetirEmail"
-                    label="Repita Email"
-                    type="email"
-                    id="repetirEmail"
-                    autoComplete="email"
-                />
-                <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="senha"
-                    label="Senha"
-                    type="password"
-                    id="senha"
-                    autoComplete="current-password"
-                />
-                <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="repetirSenha"
-                    label="Repetir a senha"
-                    type="password"
-                    id="repetirSenha"
-                    autoComplete="current-password"
-                />
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    className={classes.submit}
-                >
+        <Container>
+            <Grid item xs={12} sm={7}>
+                <Typography component="h1" variant="h5" style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingBottom: '20px' }}>
                     Registrar
-          </Button>
-            </form>
-        </Grid>
+            </Typography>
+                <form style={{width: '100%', marginTop: theme.spacing(1),}} onSubmit={onSubmit}>
+                    <Grid container spacing={2}>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="usuario"
+                            label="Nome de Usuario"
+                            name="usuario"
+                            onChange={handleChange}
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="E-mail"
+                            name="email"
+                            type="email"
+                            onChange={handleChange}
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="repetirEmail"
+                            label="Repetir E-mail"
+                            name="repetirEmail"
+                            type="email"
+                            onChange={handleChange}
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="senha"
+                            label="Senha"
+                            name="senha"
+                            type="password"
+                            helperText="No minimo 8 letras"
+                            onChange={handleChange}
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="repetirSenha"
+                            label="Repetir Senha"
+                            name="repetirSenha"
+                            type="password"
+                            helperText="No minimo 8 letras"
+                            onChange={handleChange}
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            style={{margin: theme.spacing(3, 0, 2), height: theme.spacing(6),}}
+                        >
+                            Registrar
+                    </Button>
+                    </Grid>
+                </form>
+            </Grid>
+        </Container>
+
     )
 }

@@ -1,9 +1,10 @@
 import React from 'react';
+import { Grid } from '@material-ui/core';
 
 export default function Container(props){
     return(
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', ...props.style}}>
+        <Grid container style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', ...props.style}}>
             {props.children}
-        </div>
+        </Grid>
     )
 }

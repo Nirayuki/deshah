@@ -11,10 +11,12 @@ export default function Register(data) {
 
     return (
         <CustomColorContainer style={{ backgroundColor: '#000' }}>
-            <Grid xs={10} sm={5} style={{backgroundColor: '#757', height: '70vh'}}>
-                <CustomPaper>
-                    <CustomRegister />
-                </CustomPaper>
+            <Grid container style={{display: 'flex', justifyContent: 'center', height: '70vh'}}>
+                <Grid item xs={11} sm={6} >
+                    <CustomPaper>
+                        <CustomRegister />
+                    </CustomPaper>
+                </Grid>  
             </Grid>
         </CustomColorContainer>
     )
