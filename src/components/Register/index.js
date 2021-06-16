@@ -2,10 +2,10 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import Typography from '@material-ui/core/Typography';
 import { useRouter } from 'next/router';
 import { useTheme } from '@material-ui/core/styles';
-import RegisterController from '../../controllers/RegisterController';
 import Container from '../Container';
 import axios from 'axios';
 
@@ -20,40 +20,83 @@ const initialValue = {
     usuario: '',
     senha: '',
     email: '',
+    repetirEmail: '',
+    repetirSenha: '',
+    pergunta: '',
+    resposta: ''
 }
 
 export default function CustomRegister() {
     const router = useRouter();
     const theme = useTheme();
-    
-    const [formData, setFormData] = React.useState(initialValue);
 
-    console.log(formData)
+    const [formData, setFormData] = React.useState(initialValue);
+    const [errorSenha, setErrorSenha] = React.useState(false);
+    const [errorEmail, setErrorEmail] = React.useState(false);
+    const [perguntas, setPerguntas] = React.useState({});
+    const [value, setValue] = React.useState();
+
+    React.useEffect(() => {
+        getPergunta();
+    }, []);
+
+    function getPergunta() {
+
+        axios.get('http://localhost:3001/perguntas')
+            .then((response) => {
+                setPerguntas(response.data);
+            })
+    }
+
+    console.log(perguntas);
 
     const handleChange = (ev) => {
         const { name, value } = ev.target
 
         setFormData({ ...formData, [name]: value });
-        console.log()
     }
+
+
 
     function onSubmit(ev) {
         ev.preventDefault();
 
-        axios.post('http://localhost:3001/registro', formData)
-            .then((response) => {
-                console.log(response)
-                // router.push('/', response);
-            });
+        if (formData.senha !== formData.repetirSenha) {
+            setErrorSenha(true);
+        }
+
+        if (formData.email !== formData.repetirEmail) {
+            setErrorEmail(true);
+        }
+
+        if (formData.senha === formData.repetirSenha && formData.email === formData.repetirEmail) {
+            setErrorSenha(false);
+            setErrorEmail(false);
+            let new_data = formatData(formData);
+            console.log(new_data);
+            axios.post('http://localhost:3001/registro', new_data)
+                .then((response) => {
+                    console.log(response)
+                    // router.push('/', response);
+                });
+        }
+
     }
 
+    function formatData(data) {
+        return {
+            usuario: data.usuario,
+            senha: data.senha,
+            email: data.email
+        }
+    }
     return (
         <Container>
             <Grid item xs={12} sm={7}>
                 <Typography component="h1" variant="h5" style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingBottom: '20px' }}>
                     Registrar
-            </Typography>
-                <form style={{width: '100%', marginTop: theme.spacing(1),}} onSubmit={onSubmit}>
+                </Typography>
+                <form style={{ width: '100%', marginTop: theme.spacing(1), }} onSubmit={onSubmit}>
                     <Grid container spacing={2}>
                         <TextField
                             variant="outlined"
@@ -64,6 +107,7 @@ export default function CustomRegister() {
                             label="Nome de Usuario"
                             name="usuario"
                             onChange={handleChange}
+
                         />
                         <TextField
                             variant="outlined"
@@ -85,6 +129,8 @@ export default function CustomRegister() {
                             label="Repetir E-mail"
                             name="repetirEmail"
                             type="email"
+                            error={errorEmail}
+                            helperText={errorEmail === true ? "Email incorreto" : ""}
                             onChange={handleChange}
                         />
                         <TextField
@@ -96,7 +142,6 @@ export default function CustomRegister() {
                             label="Senha"
                             name="senha"
                             type="password"
-                            helperText="No minimo 8 letras"
                             onChange={handleChange}
                         />
                         <TextField
@@ -108,18 +153,42 @@ export default function CustomRegister() {
                             label="Repetir Senha"
                             name="repetirSenha"
                             type="password"
-                            helperText="No minimo 8 letras"
+                            error={errorSenha}
+                            helperText={errorSenha ? "Senha incorreta" : "Minimo 8 letras, caracteres Especiais e Letra maiuscula"}
                             onChange={handleChange}
                         />
+
+                        <Autocomplete
+                            id={perguntas.id}
+                            style={{ width: '100%' }}
+                            onChange={(event, newValue) => {
+                                setValue(newValue)
+                            }}
+                            options={perguntas}
+                            renderOption={(option) => <Typography noWrap>{option.descricao}</Typography>}
+                            renderInput={(params) => <TextField {...params} variant="outlined" label="Pergunta de Segurança" />}
+                        />
+
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="resposta"
+                            label="Resposta"
+                            name="resposta"
+                            onChange={handleChange}
+                        />
+
                         <Button
                             type="submit"
                             fullWidth
                             variant="contained"
                             color="primary"
-                            style={{margin: theme.spacing(3, 0, 2), height: theme.spacing(6),}}
+                            style={{ margin: theme.spacing(3, 0, 2), height: theme.spacing(6), }}
                         >
                             Registrar
-                    </Button>
+                        </Button>
                     </Grid>
                 </form>
             </Grid>
