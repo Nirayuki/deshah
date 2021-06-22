@@ -48,7 +48,7 @@ export default function CustomRegister() {
             })
     }
 
-    console.log(perguntas);
+    console.log(formData);
 
     const handleChange = (ev) => {
         const { name, value } = ev.target
@@ -72,7 +72,7 @@ export default function CustomRegister() {
         if (formData.senha === formData.repetirSenha && formData.email === formData.repetirEmail) {
             setErrorSenha(false);
             setErrorEmail(false);
-            let new_data = formatData(formData);
+            let new_data = formatData(formData, value);
             console.log(new_data);
             axios.post('http://localhost:3001/registro', new_data)
                 .then((response) => {
@@ -83,11 +83,13 @@ export default function CustomRegister() {
 
     }
 
-    function formatData(data) {
+    function formatData(data, pergunta) {
         return {
             usuario: data.usuario,
             senha: data.senha,
-            email: data.email
+            email: data.email,
+            idPergunta: pergunta.id,
+            resposta: data.resposta
         }
     }
     return (
@@ -160,12 +162,14 @@ export default function CustomRegister() {
 
                         <Autocomplete
                             id={perguntas.id}
+                            name="pergunta"
                             style={{ width: '100%' }}
+                            required
                             onChange={(event, newValue) => {
                                 setValue(newValue)
                             }}
                             options={perguntas}
-                            renderOption={(option) => <Typography noWrap>{option.descricao}</Typography>}
+                            getOptionLabel={(option) => option.descricao}
                             renderInput={(params) => <TextField {...params} variant="outlined" label="Pergunta de Segurança" />}
                         />
 
