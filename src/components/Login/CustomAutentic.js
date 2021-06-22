@@ -33,15 +33,29 @@ const useStyles = makeStyles((theme) => ({
     },
 
 }));
+const initialValue = {
+    resposta: ''
+
+}
 
 export default function CustomAutentic() {
- 
-        const classes = useStyles();
-        return (
+
+
+    const classes = useStyles();
+    const [formData, setFormData] = React.useState(initialValue);
+
+    const handleChange = (ev) => {
+        const { name, value } = ev.target
+
+        setFormData({ ...formData, [name]: value });
+    }
+
+
+    console.log(formData)
+
+    return (
 
         <Grid xs={12} sm={6} spacing={3}>
-   {/* <body background="https://cdn.discordapp.com/attachments/738566721388019730/854800704711294986/6a12decf38720e0731aece4102598c42.jpg" height='50%' width='100%'>
-      </body> */}
             <Typography component="h1" variant="h4" style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingBottom: '20px' }}>
                 Autenticação
             </Typography>
@@ -52,6 +66,7 @@ export default function CustomAutentic() {
                 resposta de segurança
             </p>
 
+
             <form className={classes.form} noValidate>
                 <TextField
                     variant="outlined"
@@ -61,12 +76,8 @@ export default function CustomAutentic() {
                     id="resposta"
                     label="Resposta"
                     name="resposta"
+                    onChange={handleChange}
                 />
-
-                {/* <FormControlLabel
-                    control={<Checkbox value="remember" color="primary" />}
-                    label="Relembre-me"
-                /> */}
                 <Button
                     type="submit"
                     fullWidth
@@ -76,20 +87,7 @@ export default function CustomAutentic() {
                 >
                     verificação
                 </Button>
-                {/* <Grid container>
-                    <Grid item xs>
-                        <Link href="#" variant="body2">
-                            Esqueceu a senha ?
-              </Link>
-                    </Grid>
-                    <Grid item>
-                        <Link href="#" variant="body2">
-                            {"Não tem uma conta ? Registre-se"}
-                        </Link>
-                    </Grid>
-                </Grid> */}
             </form>
         </Grid>
-        )
-    
+    )
 }
