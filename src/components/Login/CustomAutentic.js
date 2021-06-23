@@ -17,7 +17,7 @@ const CustomAutentic = ({ user }) => {
     function onSubmit(ev) {
         ev.preventDefault();
 
-        if(user[0].RespostaPergunta !== )
+        
 
     }
 
