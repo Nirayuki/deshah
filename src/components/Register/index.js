@@ -50,7 +50,6 @@ export default function CustomRegister() {
             })
     }
 
-    console.log(formData);
 
     const handleChange = (ev) => {
         const { name, value } = ev.target
@@ -90,7 +89,7 @@ export default function CustomRegister() {
             axios.post('http://localhost:3001/registro', new_data)
                 .then((response) => {
                     console.log(response)
-                    // router.push('/', response);
+                    router.push('/');
                 });
         }
 

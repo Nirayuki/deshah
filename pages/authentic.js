@@ -5,7 +5,6 @@ import CustomAutentic from '../src/components/Login/CustomAutentic';
 import { Grid } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import CustomPaper from '../src/components/CustomPaper';
-import { useRouter, withRouter } from 'next/router';
 
 export default function Authentic() {
 
