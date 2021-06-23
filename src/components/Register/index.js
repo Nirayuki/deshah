@@ -31,10 +31,12 @@ export default function CustomRegister() {
     const theme = useTheme();
 
     const [formData, setFormData] = React.useState(initialValue);
+    const [errorRepetirSenha, setErrorRepetirSenha] = React.useState(false);
     const [errorSenha, setErrorSenha] = React.useState(false);
     const [errorEmail, setErrorEmail] = React.useState(false);
     const [perguntas, setPerguntas] = React.useState({});
     const [value, setValue] = React.useState();
+
 
     React.useEffect(() => {
         getPergunta();
@@ -61,17 +63,28 @@ export default function CustomRegister() {
     function onSubmit(ev) {
         ev.preventDefault();
 
+        let strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})')
+
         if (formData.senha !== formData.repetirSenha) {
-            setErrorSenha(true);
+            setErrorRepetirSenha(true);
         }
 
         if (formData.email !== formData.repetirEmail) {
             setErrorEmail(true);
         }
 
-        if (formData.senha === formData.repetirSenha && formData.email === formData.repetirEmail) {
+        if (!strongPassword.test(formData.senha)) {
+            console.log('caiu aqui')
+            setErrorSenha(true);
+        }
+
+        console.log(strongPassword.test(formData.senha))
+
+        if (formData.senha === formData.repetirSenha && formData.email === formData.repetirEmail && strongPassword.test(formData.senha)) {
+            console.log('caiu para o banco')
             setErrorSenha(false);
             setErrorEmail(false);
+            setErrorRepetirSenha(false);
             let new_data = formatData(formData, value);
             console.log(new_data);
             axios.post('http://localhost:3001/registro', new_data)
@@ -144,6 +157,8 @@ export default function CustomRegister() {
                             label="Senha"
                             name="senha"
                             type="password"
+                            error={errorSenha}
+                            helperText={errorSenha ? "Incorreta, minimo 8 letras, caracteres Especiais e Letra maiuscula " : "Minimo 8, letra minuscula, numero, caracteres Especiais e Letra maiuscula"}
                             onChange={handleChange}
                         />
                         <TextField
@@ -155,8 +170,8 @@ export default function CustomRegister() {
                             label="Repetir Senha"
                             name="repetirSenha"
                             type="password"
-                            error={errorSenha}
-                            helperText={errorSenha ? "Senha incorreta" : "Minimo 8 letras, caracteres Especiais e Letra maiuscula"}
+                            error={errorRepetirSenha}
+                            helperText={errorRepetirSenha ? "Senha incorreta" : "Minimo 8, letra minuscula, numero, caracteres Especiais e Letra maiuscula"}
                             onChange={handleChange}
                         />
 
