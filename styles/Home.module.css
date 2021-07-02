@@ -4,7 +4,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url(../public/background.png);
+    background-image: url(../public/backgroundImage.png);
+  
+    /* Image is centered vertically and horizontally at all times */
+    background-position: center center;
+    
+    /* Image doesn't repeat */
+    background-repeat: no-repeat;
+    
+    /* Makes the image fixed in the viewport so that it doesn't move when 
+       the content height is greater than the image height */
+    background-attachment: fixed;
+    
+    /* This is what makes the background image rescale based on its container's size */
+    background-size: cover;
+    
+    /* Pick a solid background color that will be displayed while the background image is loading */
+    background-color:#464646;
 }
 
 
@@ -22,7 +38,7 @@
     height: 70vh;
     background-color: #FFF;
     border-radius: 10px;
-    box-shadow: 1px 3px 9px rgba(0, 0, 0, 0.25);
+    box-shadow: 1px 3px 9px rgba(0, 0, 0, 0.50);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,7 +51,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 2px solid #eaeaea;
 }
 
 .span_container span{
@@ -57,7 +73,7 @@
     height: 10vh;
     width: 100%;
     border-radius: 10px;
-    border: 1px solid #eaeaea;
+    border: 2px solid #eaeaea;
     display: flex;
     align-items: center;
 }
