@@ -6,7 +6,7 @@ import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 export default function NavBar() {
     return (
 
-        <Navbar bg="dark" variant="dark" expand="lg">
+        <Navbar bg="dark" variant="dark" expand="lg" className='fixed-top'>
             <Container>
                 <Navbar.Brand href="/">Deshah</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -23,11 +23,7 @@ export default function NavBar() {
                             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                         </NavDropdown> */}
                     </Nav>
-                    
-                    <Nav className="me-auto">
-                        <Nav.Link href="/teste">Teste</Nav.Link>
-                        <Nav.Link href="/teste2">Teste2</Nav.Link>
-                    </Nav>
+
 
                     <Nav>
                         <Nav.Link href="/login">Login</Nav.Link>
