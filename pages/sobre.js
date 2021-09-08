@@ -3,8 +3,15 @@ import React, { Component } from 'react'
 import Layout from '../src/components/Layout'
 import { Accordion, Card, Button, Fade } from 'react-bootstrap';
 import CustomColorContainer from '../src/components/CustomColorContainer';
+import { getActiveElement } from 'formik';
 
 class sobre extends Component {
+    activeKey = null
+
+    setActiveKey(key){
+        this.activeKey = key;
+    }
+
     toggleItem(itemIndex){
         const itens = document.querySelectorAll(".AccordionBody");
         
@@ -18,6 +25,8 @@ class sobre extends Component {
                     console.log("Show");
                     element.style.display="flex";
                 }
+            }else{
+                element.style.display="none";
             }
         });
 
@@ -56,7 +65,7 @@ class sobre extends Component {
     
                         @keyframes appear{
                             from{
-                                opacity:0;
+                                opacity:0.5;
                                 margin-top:-1rem;
                             }
                             to{
