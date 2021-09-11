@@ -18,6 +18,7 @@ export default function Home() {
           margin-top: 4rem;
           border-radius: 10px;
           background: #C4C4C4;
+          text-align:center;
         }
 
         #ranking tr td:first-child,#ranking tr th:first-child{
@@ -39,7 +40,7 @@ export default function Home() {
         }
 
         #news tr{
-          text-align:center;
+          
           
           
         }
