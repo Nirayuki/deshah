@@ -20,7 +20,7 @@ export default function Home() {
           background: #C4C4C4;
         }
 
-        #ranking tr td:first-child{
+        #ranking tr td:first-child,#ranking tr th:first-child{
           
           border-right: black solid 0.1rem;
         }
