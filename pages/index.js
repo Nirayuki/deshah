@@ -2,6 +2,19 @@ import React from 'react';
 import Layout from '../src/components/Layout';
 import { Table } from 'react-bootstrap';
 
+const data = [
+  {name: "Godinez", score: 1000},
+  {name: "Hugo", score: 970},
+  {name: "Aron", score: 968},
+  {name: "David", score: 950},
+  {name: "Henrique", score: 940},
+  {name: "Samuel", score: 930},
+  {name: "Eduardo", score: 910},
+  {name: "Dudu", score: 850},
+  {name: "American Killer", score: 840},
+  {name: "God of scores", score: 810},
+]
+
 export default function Home() {
   return (
     
@@ -17,17 +30,18 @@ export default function Home() {
           margin: 0rem 1rem;
           margin-top: 4rem;
           border-radius: 10px;
-          background: #C4C4C4;
+          background: #212529;
           text-align:center;
+          color: #fff;
         }
 
         #ranking tr td:first-child,#ranking tr th:first-child{
           
-          border-right: black solid 0.1rem;
+          border-right: #fff solid 0.1rem;
         }
 
         .table tbody tr{
-          border-bottom: grey 0.1rem;
+          border-bottom: #fff 0.1rem;
         }
 
         .table tbody tr:last-child td{
@@ -49,7 +63,7 @@ export default function Home() {
 
       `}
       </style>
-      <div style={{background:"#8C8787", height:"100vh"}}>
+      <div style={{background: 'url(background.png)', backgroundPosition: 'center center',  height:"100vh"}}>
       <section id="table-section">
             <Table id="ranking" className="table">
               <thead>
@@ -60,30 +74,12 @@ export default function Home() {
               </thead>
 
               <tbody>
-                <tr>
-                  <td>Godinez</td>
-                  <td>1000.0</td>
-                </tr>
-
-                <tr>
-                  <td></td>
-                  <td>0</td>
-                </tr>
-
-                <tr>
-                  <td></td>
-                  <td>0</td>
-                </tr>
-
-                <tr>
-                  <td></td>
-                  <td>0</td>
-                </tr>
-
-                <tr>
-                  <td></td>
-                  <td>0</td>
-                </tr>
+                {data.map((item) => (
+                    <tr>
+                      <td>{item.name}</td>
+                      <td>{item.score}</td>
+                    </tr>
+                ))}
               </tbody>
             </Table>
 

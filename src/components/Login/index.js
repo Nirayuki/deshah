@@ -17,7 +17,7 @@ const initialValue = {
     senha: ''
 }
 
-export default function CustomLogin() {
+export default function CustomLogin(props) {
 
     const [error, setError] = React.useState(false);
     const [form, setForm] = React.useState(initialValue);
@@ -61,15 +61,12 @@ export default function CustomLogin() {
     
 
     return (
-        <Container>
+        <Container style={{...props.style}}>
             <Grid item xs={12} sm={6}>
                 <Typography component="h1" variant="h5" style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingBottom: '20px' }}>
                     Login
                 </Typography>
-                <Grid xs={6} sm={12} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src="https://cdn.discordapp.com/attachments/738560722564415563/846526210954756156/gmail-icopn.png" style={{ width: '50px' }} />
-                    <img src="https://cdn.discordapp.com/attachments/738560722564415563/846526218362552320/faceboook-icon.png" style={{ width: '50px' }} />
-                </Grid>
+               
                 <form style={{ width: '100%', marginTop: theme.spacing(1), }} onSubmit={onSubmit}>
                     <Grid container spacing={2}>
                         <TextField

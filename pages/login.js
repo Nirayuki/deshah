@@ -11,13 +11,14 @@ export default function Login(data) {
     const theme = useTheme();
 
     return (
-        <CustomColorContainer style={{ backgroundColor: '#000' }}>
-            <Grid xs={10} sm={5} style={{backgroundColor: '#757', height: '70vh'}}>
-                <CustomPaper>
-                    <CustomLogin />
-                </CustomPaper>
+        <Layout>
+            <Grid style={{width: '100%', height: '100vh'}}>
+                <div style={{height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                    <CustomLogin/>
+                </div>
             </Grid>
-        </CustomColorContainer>
+          
+        </Layout>
     )
 }
 

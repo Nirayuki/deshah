@@ -1,4 +1,5 @@
 import React from 'react';
+import Layout from '../src/components/Layout';
 import CustomColorContainer from '../src/components/CustomColorContainer';
 import CustomRegister from '../src/components/Register/index';
 import { Grid } from '@material-ui/core';
@@ -10,15 +11,13 @@ export default function Register(data) {
     const theme = useTheme();
 
     return (
-        <CustomColorContainer style={{ backgroundColor: '#000' }}>
-            <Grid container style={{display: 'flex', justifyContent: 'center', height: '70vh'}}>
-                <Grid item xs={11} sm={6} >
-                    <CustomPaper>
-                        <CustomRegister />
-                    </CustomPaper>
-                </Grid>  
+        <Layout>
+            <Grid style={{ width: '100%', height: '100vh'}}>
+                <div style={{height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                    <CustomRegister />
+                </div>  
             </Grid>
-        </CustomColorContainer>
+        </Layout>
     )
 }
 
