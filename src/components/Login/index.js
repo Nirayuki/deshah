@@ -22,6 +22,8 @@ export default function CustomLogin(props) {
     const [error, setError] = React.useState(false);
     const [form, setForm] = React.useState(initialValue);
     const [data, setData] = React.useState();
+    const token = 0;
+    const [isLogin, setIsLogin] = React.useState(false);
     const theme = useTheme();
     const router = useRouter();
 
@@ -40,17 +42,15 @@ export default function CustomLogin(props) {
 
         axios.post('http://localhost:3001/login', form)
             .then((response) => {
-                console.log(response.data.message)
-               if(response.data?.message === "Wrong username/password combination" || response.data?.message === "Email doesn't exist"){
+               if(response.data?.message === "Login incorreto" || response.data?.message === "Email doesn't exist"){
+                   setIsLogin(false);
                    setError(true);
                } else {
-                   setError(false);
-
-                   Store.dispatch(setUser({
-                       list: response.data
-                   }))
-
-                   router.push('/authentic');
+                    setError(false);
+                    setIsLogin(true);
+                    console.log("Correto")
+                   localStorage.setItem("token", response.data.token)
+                   router.push('/');
                }
             });
 
@@ -62,65 +62,93 @@ export default function CustomLogin(props) {
 
     return (
         <Container style={{...props.style}}>
-            <Grid item xs={12} sm={6}>
-                <Typography component="h1" variant="h5" style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingBottom: '20px' }}>
-                    Login
-                </Typography>
-               
-                <form style={{ width: '100%', marginTop: theme.spacing(1), }} onSubmit={onSubmit}>
-                    <Grid container spacing={2}>
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                            error={error}
-                            helperText={error ? "Login incorreto" : ""}
-                            onChange={handleChange}
-                        />
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="senha"
-                            label="Senha"
-                            type="password"
-                            id="Senha"
-                            autoComplete="current-password"
-                            error={error} 
-                            onChange={handleChange}
+         <Grid item xs={12} sm={6}>
+            <Typography component="h1" variant="h5" style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingBottom: '20px' }}>
+                Login
+            </Typography>
+           
+            <form style={{ width: '100%', marginTop: theme.spacing(1), }} onSubmit={onSubmit}>
+                <Grid container spacing={2}>
+                    {isLogin 
+                        ? 
+                        <>
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="resposta"
+                                label="Resposta"
+                                name="resposta"
+                                defaultValue=""
+                                onChange={handleChange}
                             />
+    
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                            >
+                                Login
+                            </Button>
+                        </>
+                        : 
+                        <>
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                label="Email Address"
+                                name="email"
+                                autoComplete="email"
+                                autoFocus
+                                error={error}
+                                helperText={error ? "Login incorreto" : ""}
+                                onChange={handleChange}
+                            />
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="senha"
+                                label="Senha"
+                                type="password"
+                                id="Senha"
+                                autoComplete="current-password"
+                                error={error} 
+                                onChange={handleChange}
+                                />
 
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                        >
-                            Logar
-                        </Button>
-                        <Grid container>
-                            <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Esqueceu a senha ?
-                                </Link>
-                            </Grid>
-                            <Grid item>
-                                <Link href="#" variant="body2">
-                                    {"Não tem uma conta ? Registre-se"}
-                                </Link>
-                            </Grid>
+                            <Button
+                                onClick={() => setIsLogin(true)}
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                            >
+                                Próximo
+                            </Button>
+                        </>
+                    }
+                   
+                    <Grid container>
+                        <Grid item xs>
+                            <Link href="#" variant="body2">
+                                Esqueceu a senha ?
+                            </Link>
+                        </Grid>
+                        <Grid item>
+                            <Link href="#" variant="body2">
+                                {"Não tem uma conta ? Registre-se"}
+                            </Link>
                         </Grid>
                     </Grid>
+                 </Grid>
                 </form>
             </Grid>
         </Container>
-
     )
 }
