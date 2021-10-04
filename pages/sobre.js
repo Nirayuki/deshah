@@ -6,11 +6,7 @@ import CustomColorContainer from '../src/components/CustomColorContainer';
 import { getActiveElement } from 'formik';
 
 class sobre extends Component {
-    activeKey = null
 
-    setActiveKey(key){
-        this.activeKey = key;
-    }
 
     toggleItem(itemIndex){
         const itens = document.querySelectorAll(".AccordionBody");
@@ -80,8 +76,8 @@ class sobre extends Component {
                 <div style={{ background: 'url(background.png)', backgroundPosition: 'center center', height: '100vh' }}>
                     <Accordion className='Accordion' style={{ width: '50%', marginLeft: 'auto', marginRight: 'auto', position: 'relative', top: '200px' }} flush  >
 
-                        <Accordion.Item eventKey="0" onClick={() => this.toggleItem(0)} >
-                            <Accordion.Header>
+                        <Accordion.Item eventKey="0">
+                            <Accordion.Header onClick={() => this.toggleItem(0)}>
                                 <div className='AccordionHead'>Quem somos?</div>
                             </Accordion.Header>
 
@@ -90,8 +86,8 @@ class sobre extends Component {
                             </Accordion.Body>
                         </Accordion.Item>
 
-                        <Accordion.Item eventKey="1" onClick={() => this.toggleItem(1)}>
-                            <Accordion.Header>
+                        <Accordion.Item eventKey="1">
+                            <Accordion.Header  onClick={() => this.toggleItem(1)}>
                                 <div className='AccordionHead'>Qual o objetivo do nosso projeto?</div>
                             </Accordion.Header>
 
@@ -100,8 +96,8 @@ class sobre extends Component {
                             </Accordion.Body>
                         </Accordion.Item>
 
-                        <Accordion.Item eventKey="2" onClick={() => this.toggleItem(2)}>
-                            <Accordion.Header>
+                        <Accordion.Item eventKey="2">
+                            <Accordion.Header onClick={() => this.toggleItem(2)}>
                                 <div className='AccordionHead'>Qual a previsao de lancamento do jogo?</div>
                             </Accordion.Header>
 
@@ -110,8 +106,8 @@ class sobre extends Component {
                             </Accordion.Body>
                         </Accordion.Item>
 
-                        <Accordion.Item eventKey="3" onClick={() => this.toggleItem(3)}>
-                            <Accordion.Header>
+                        <Accordion.Item eventKey="3">
+                            <Accordion.Header  onClick={() => this.toggleItem(3)}>
                                 <div className='AccordionHead'>Quais os integrantes da equipe?</div>
                             </Accordion.Header>
 
