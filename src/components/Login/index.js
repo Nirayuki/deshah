@@ -53,7 +53,6 @@ export default function CustomLogin(props) {
                    router.push('/');
                }
             });
-
             
         
     }
