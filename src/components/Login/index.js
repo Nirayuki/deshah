@@ -10,6 +10,8 @@ import { useTheme } from '@material-ui/core/styles';
 import { useRouter } from 'next/router';
 import Store from "../../store/index";
 import { setUser } from '../../store/actions';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 
 
 const initialValue = {
@@ -18,14 +20,14 @@ const initialValue = {
 }
 
 export default function CustomLogin(props) {
-
-    const [error, setError] = React.useState(false);
+    const { signIn, errorLogin } = useContext(AuthContext);
+    const [error, setError] = React.useState(errorLogin);
     const [form, setForm] = React.useState(initialValue);
     const [data, setData] = React.useState();
-    const token = 0;
     const [isLogin, setIsLogin] = React.useState(false);
     const theme = useTheme();
     const router = useRouter();
+    
 
 
     const handleChange = (ev) => {
@@ -35,26 +37,17 @@ export default function CustomLogin(props) {
     }
 
 
-    function onSubmit(ev) {
+    async function onSubmit(ev) {
         ev.preventDefault();
 
         console.log('submit')
 
-        axios.post('http://localhost:3001/login', form)
-            .then((response) => {
-               if(response.data?.message === "Login incorreto" || response.data?.message === "Email doesn't exist"){
-                   setIsLogin(false);
-                   setError(true);
-               } else {
-                    setError(false);
-                    setIsLogin(true);
-                    console.log("Correto")
-                   localStorage.setItem("token", response.data.token)
-                   router.push('/');
-               }
-            });
-            
+        const isFalse = await signIn(form);
         
+        if (isFalse === false) {
+            console.log(isFalse)
+            setIsLogin(false);
+        }
     }
 
     

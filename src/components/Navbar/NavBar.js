@@ -1,9 +1,13 @@
 import React from 'react'
 import Link from 'next/link'
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 
 
 export default function NavBar() {
+    const {isAuthenticated, logOut} = useContext(AuthContext);
+    console.log(isAuthenticated)
     return (
 
         <Navbar bg="dark" variant="dark" expand="lg" className='fixed-top'>
@@ -24,10 +28,11 @@ export default function NavBar() {
                         </NavDropdown> */}
                     </Nav>
 
-
+                    
                     <Nav>
-                        <Nav.Link href="/login">Login</Nav.Link>
-                        <Nav.Link href="/register">Registrar</Nav.Link>
+                        {isAuthenticated ? <> <Nav.Link onClick={() => logOut()}>LogOut</Nav.Link></> : <> <Nav.Link href="/login">Login</Nav.Link>
+                        <Nav.Link href="/register">Registrar</Nav.Link></>}
+                        
                     </Nav>
                 </Navbar.Collapse>
             </Container>

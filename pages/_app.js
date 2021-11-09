@@ -7,9 +7,9 @@ import 'bootstrap/dist/css/bootstrap.css'
 export default function MyApp({ Component, pageProps }) {
   return (
     <Provider store={Store}>
-      {/* <AuthProvider> */}
+      <AuthProvider>
         <Component {...pageProps} />
-      {/* </AuthProvider>  */}
+      </AuthProvider> 
     </Provider>
   )
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import Layout from '../src/components/Layout';
 import { Table } from 'react-bootstrap';
+import { useContext } from 'react';
+import { AuthContext } from '../src/contexts/AuthContext';
 
 const data = [
   {name: "Godinez", score: 1000},
@@ -16,11 +18,12 @@ const data = [
 ]
 
 export default function Home() {
+    const {isAuthenticated} = useContext(AuthContext);
+  
   return (
     
 
     <Layout> 
-
       <style type="text/css">
       {`
         *{
@@ -63,7 +66,7 @@ export default function Home() {
 
       `}
       </style>
-      <div style={{background: 'url(background.png)', backgroundPosition: 'center center',  height:"100vh"}}>
+      {isAuthenticated ? <> <div style={{background: 'url(background.png)', backgroundPosition: 'center center',  height:"100vh"}}>
       <section id="table-section">
             <Table id="ranking" className="table">
               <thead>
@@ -102,11 +105,8 @@ export default function Home() {
                 </tbody>
               </Table>
         </section>
-      </div>
-
-
-
-
+      </div> </> : <> <div style={{marginTop: "100px"}}>You arent authenticated</div></>}
+      
     </Layout>
   )
 }
