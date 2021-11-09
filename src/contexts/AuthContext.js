@@ -1,16 +1,15 @@
-import { useState, useEffect  } from "react";
+import React, { useEffect  } from "react";
 import { createContext } from "react";
 import { parseCookies, setCookie, destroyCookie } from 'nookies';
 import Router from 'next/router';
-import axios from 'axios';
+import axios from "axios";
 
 
 export const AuthContext = createContext({})
 
 export function AuthProvider({children}) {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [errorLogin, setErrorLogin] = useState(false);
-    const [twoStep, setTwoStep] = useState(true);
+    const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+    
 
     useEffect(() => {
         const { 'token': token} = parseCookies()
@@ -31,11 +30,9 @@ export function AuthProvider({children}) {
             .then((response) => {
                if(response.data?.message === "Login incorreto" || response.data?.message === "Email doesn't exist"){
                     setIsAuthenticated(false);
-                    setErrorLogin(true);
-                    setTwoStep(false);
                     console.log("caiu no errado")
                } else {
-                    setCookie(undefined, 'token', response.token, {
+                    setCookie(undefined, 'token', response.data.token, {
                         maxAge: 60 * 60 * 1, // 1 Hour
             
                     })
@@ -43,8 +40,6 @@ export function AuthProvider({children}) {
                     Router.push('/');
                }
             });
-
-            return(twoStep);
     }
 
     async function logOut() {
@@ -54,7 +49,7 @@ export function AuthProvider({children}) {
     }
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, signIn, logOut, errorLogin }}>
+        <AuthContext.Provider value={{ isAuthenticated, signIn, logOut }}>
             {children}
         </AuthContext.Provider>
     )

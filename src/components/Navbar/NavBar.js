@@ -7,7 +7,6 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 export default function NavBar() {
     const {isAuthenticated, logOut} = useContext(AuthContext);
-    console.log(isAuthenticated)
     return (
 
         <Navbar bg="dark" variant="dark" expand="lg" className='fixed-top'>
@@ -30,7 +29,7 @@ export default function NavBar() {
 
                     
                     <Nav>
-                        {isAuthenticated ? <> <Nav.Link onClick={() => logOut()}>LogOut</Nav.Link></> : <> <Nav.Link href="/login">Login</Nav.Link>
+                        {isAuthenticated ? <> <Nav.Link onClick={() => logOut()}>LogOut</Nav.Link> <Nav.Link href="/settings">Settings</Nav.Link></> : <> <Nav.Link href="/login">Login</Nav.Link>
                         <Nav.Link href="/register">Registrar</Nav.Link></>}
                         
                     </Nav>

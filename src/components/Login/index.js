@@ -16,12 +16,13 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 const initialValue = {
     email: '',
-    senha: ''
+    senha: '',
+    resposta: '',
 }
 
 export default function CustomLogin(props) {
-    const { signIn, errorLogin } = useContext(AuthContext);
-    const [error, setError] = React.useState(errorLogin);
+    const { isAuthenticated, signIn } = useContext(AuthContext);
+    const [error, setError] = React.useState();
     const [form, setForm] = React.useState(initialValue);
     const [data, setData] = React.useState();
     const [isLogin, setIsLogin] = React.useState(false);
@@ -42,10 +43,11 @@ export default function CustomLogin(props) {
 
         console.log('submit')
 
-        const isFalse = await signIn(form);
-        
-        if (isFalse === false) {
-            console.log(isFalse)
+        await signIn(form);
+
+    
+        if(isAuthenticated === false) {
+            setError(true);
             setIsLogin(false);
         }
     }
@@ -72,7 +74,7 @@ export default function CustomLogin(props) {
                                 id="resposta"
                                 label="Resposta"
                                 name="resposta"
-                                defaultValue=""
+                                value={form.resposta}
                                 onChange={handleChange}
                             />
     
@@ -95,7 +97,6 @@ export default function CustomLogin(props) {
                                 id="email"
                                 label="Email Address"
                                 name="email"
-                                autoComplete="email"
                                 autoFocus
                                 error={error}
                                 helperText={error ? "Login incorreto" : ""}

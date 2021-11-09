@@ -13,6 +13,7 @@
     "@material-ui/lab": "^4.0.0-alpha.58",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
+    "dotenv": "^10.0.0",
     "formik": "^2.2.9",
     "material-ui-password-field": "^2.1.2",
     "next": "10.0.8",
