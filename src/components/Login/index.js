@@ -56,7 +56,7 @@ export default function CustomLogin(props) {
 
     return (
         <Container style={{...props.style}}>
-         <Grid item xs={12} sm={6}>
+         <Grid item xs={12} sm={4}>
             <Typography component="h1" variant="h5" style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingBottom: '20px' }}>
                 Login
             </Typography>
