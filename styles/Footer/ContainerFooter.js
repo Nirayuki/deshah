@@ -1,14 +1,17 @@
 import styled from "styled-components";
 
-const ContainerFooter = styled.div`
-    width: 100%;
+const ContainerFooter = styled.footer`
+    width: 100vw;
     height: 5vh;
-    background-color: darkgrey;
-
+    background-color: #202020;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0rem 5rem;
+    position: fixed;
+    bottom:0;
+    left:0;
 
     @media screen and (max-width: 500px) {
         height: 10rem;
@@ -36,12 +39,13 @@ const ContainerFooter = styled.div`
     .container-navigation{
         width: 50%;
         display: flex;
-
+        padding-left: 5rem;
 
         @media screen and (max-width: 500px){
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
+            padding-left: 0px;
         }
     }
 
@@ -52,7 +56,7 @@ const ContainerFooter = styled.div`
     .textContent{
         text-decoration: none;
         padding-right: 3rem;
-        color: #000;
+        color: white;
         cursor: pointer;
         @media screen and (max-width: 500px){
             padding-bottom: 0.7rem;

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 const ContainerMain = styled.div`
-    width: ${props => props.width || "100vw"};
-    height: ${props => props.height || "100vh"};
+    width: 100%;
+    height: 100%;
     background-color: #181818;
 `
 

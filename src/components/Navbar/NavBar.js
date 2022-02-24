@@ -42,7 +42,7 @@ export default function NavBar() {
 
 
         <ContainerNav>
-        <Logo href="">
+        <Logo href="/">
             Deshah<span>Games</span>
         </Logo>
         <Hamburger onClick={() => setIsOpen(!isOpen)}>
@@ -51,8 +51,8 @@ export default function NavBar() {
             <span />
         </Hamburger>
         <Menu isOpen={isOpen}>
-            <MenuLink href="">Home</MenuLink>
-            <MenuLink href="">Download</MenuLink>
+            <MenuLink href="/">Home</MenuLink>
+            <MenuLink href="/download">Download</MenuLink>
             {isAuthenticated ? <> <MenuLink onClick={() => logOut()}>LogOut</MenuLink> <MenuLink href="/settings">Settings</MenuLink></> : <> <MenuLink href="/login">Login</MenuLink>
             <MenuLink href="/register">Registrar</MenuLink></>}
         </Menu>
@@ -85,7 +85,7 @@ const ContainerNav = styled.div`
   align-items: center;
   flex-wrap: wrap;
   background: #202020;
-  position: absolute;
+  position: static;
   top: 0;
   left: 0;
   right: 0;
