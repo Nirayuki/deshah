@@ -1,13 +1,14 @@
 import NavBar from './Navbar/NavBar';
 import Footer from './Footer/Index';
+import ContainerMain from '../../styles/ContainerMain';
 
 const Layout = ({children}) => {
     return(
-        <div className="content">
+        <ContainerMain>
             <NavBar/>  
             {children}
             <Footer/>
-        </div>
+        </ContainerMain>
     );
 }
 
