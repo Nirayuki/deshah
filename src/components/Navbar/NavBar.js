@@ -12,20 +12,20 @@ export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <ContainerNav>
-        <Logo href="/">
-            Deshah<span>Games</span>
-        </Logo>
-        <Hamburger onClick={() => setIsOpen(!isOpen)}>
-            <span />
-            <span />
-            <span />
-        </Hamburger>
-        <Menu isOpen={isOpen}>
-            <MenuLink href="/">Home</MenuLink>
-            <MenuLink href="/download">Download</MenuLink>
-            {isAuthenticated ? <> <MenuLink onClick={() => logOut()}>LogOut</MenuLink> <MenuLink href="/settings">Settings</MenuLink></> : <> <MenuLink href="/login">Login</MenuLink>
-            <MenuLink href="/register">Registrar</MenuLink></>}
-        </Menu>
+          <Logo href="/">
+              Deshah<span>Games</span>
+          </Logo>
+          <Hamburger onClick={() => setIsOpen(!isOpen)}>
+              <span />
+              <span />
+              <span />
+          </Hamburger>
+          <Menu isOpen={isOpen}>
+              <MenuLink href="/">Home</MenuLink>
+              <MenuLink href="/download">Download</MenuLink>
+              {isAuthenticated ? <> <MenuLink onClick={() => logOut()}>LogOut</MenuLink> <MenuLink href="/settings">Settings</MenuLink></> : <> <MenuLink href="/login">Login</MenuLink>
+              <MenuLink href="/register">Registrar</MenuLink></>}
+          </Menu>
         </ContainerNav>
         
         

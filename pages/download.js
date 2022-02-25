@@ -14,7 +14,7 @@ export default function download () {
 }
 
 const Container = styled.div`
-    height: 87.5vh;
+    height: auto;
     /* display: flex;
     justify-content: center;
     align-items: center;

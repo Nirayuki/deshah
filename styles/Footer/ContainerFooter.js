@@ -9,50 +9,53 @@ const ContainerFooter = styled.footer`
     justify-content: center;
     align-items: center;
     padding: 0rem 5rem;
-    position: fixed;
+    position: static;
     bottom:0;
     left:0;
 
-    @media screen and (max-width: 500px) {
-        height: 10rem;
-        flex-direction: column;
-        padding: 0rem 1rem;
+    @media screen and (max-width: 650px) {
+        height: auto;
     }
 
     .content{
         width: 50%;
-        /* background-color: #000; */
         justify-content: space-between;
         display: flex;
 
-        @media screen and (max-width: 500px){
-            width: 70%;
-            height: 10rem;
-            align-items: center;
-            padding: 0.5rem;
-            /* justify-content: center; */
-            /* background-color: #000; */
+        @media screen and (max-width: 1280px) {
+            width: 100%;
+        }
+
+        @media screen and (max-width: 650px){
             flex-direction: column;
+            width: 100%;
         }
     }
 
     .container-navigation{
         width: 50%;
         display: flex;
-        padding-left: 5rem;
+        justify-content: flex-start;
 
-        @media screen and (max-width: 500px){
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding-left: 0px;
+        @media screen and (max-width: 650px){
+            width: 100%;
+            margin-top: 0.5rem;
+            justify-content: center;
         }
     }
 
-    .copyright{
+    .container-copyright{
+        display: flex;
         width: 50%;
+        justify-content: flex-end;
+
+        @media screen and (max-width: 650px){
+            margin-top: 0.5rem;
+            width: 100%;
+            justify-content: center;
+        }
     }
-    
+
     .textContent{
         text-decoration: none;
         padding-right: 3rem;
@@ -61,11 +64,6 @@ const ContainerFooter = styled.footer`
 
         &:hover {
             color: #7b7fda;
-        }
-
-        @media screen and (max-width: 500px){
-            padding-bottom: 0.7rem;
-            padding-right: 0px;
         }
     }
 
