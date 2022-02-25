@@ -1,12 +1,6 @@
-const webpack = require('webpack')
-
-const { parsed: myEnv } = require('dotenv').config({
-    path:'/full/custom/path/to/env'
-})
-
 module.exports = {
-    webpack(config) {
-        config.plugins.push(new webpack.EnvironmentPlugin(myEnv))
-        return config
+    images: {
+      deviceSizes: [320, 640, 768, 1024, 1600],
+      domains: ['source.unsplash.com']
     }
-}
+  }

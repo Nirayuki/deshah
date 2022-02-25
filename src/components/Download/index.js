@@ -1,14 +1,15 @@
 import React from 'react';
-import ContainerDownload from '../../../styles/Download/ContainerDownload';
+import {ContainerDownload, BgSection} from '../../../styles/Download/ContainerDownload';
+import Image from 'next/image';
 
 
 export default function Download(){
     return(
         <ContainerDownload>
-            <div>oi</div>
+            <BgSection>
+                <img src='img/bg.jpg'/>
+            </BgSection>
         </ContainerDownload>
         
     )
-}
-
-
+} 

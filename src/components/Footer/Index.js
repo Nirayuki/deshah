@@ -7,9 +7,9 @@ const Footer = () => {
       <div className='content'>
         <div className="text copyright">© Copyright 2022 Deshah - Todos os direitos reservados</div>
           <div className='container-navigation'>
-              <a className='text textContent'>Termos</a>
-              <a className='text textContent'>Sobre</a>
-              <a className='text textContent'>Fale Conosco</a>
+              <a href="/termos" className='text textContent'>Termos</a>
+              <a href="/sobre" className='text textContent'>Sobre</a>
+              <a href="/ajuda" className='text textContent'>Fale Conosco</a>
           </div>
       </div>
     </ContainerFooter>

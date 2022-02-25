@@ -1,8 +1,8 @@
 import React from 'react';
 import Layout from '../src/components/Layout';
-import { Table } from 'react-bootstrap';
 import { useContext } from 'react';
 import { AuthContext } from '../src/contexts/AuthContext';
+import styled from 'styled-components';
 
 const data = [
   {name: "Godinez", score: 1000},
@@ -24,102 +24,28 @@ export default function Home() {
     
 
     <Layout> 
-      <style type="text/css">
-      {`
-        *{
-          -webkit-backface-visibility: hidden;
-        }
-        .table{
-          margin: 0rem 1rem;
-          margin-top: 4rem;
-          border-radius: 10px;
-          background: #212529;
-          text-align:center;
-          color: #fff;
-        }
+      {isAuthenticated ? <> 
+      
+        <Container>
+            You are authenticated
+        </Container>
+      
+      </> : <>  {/* ---------------------------------------------------------------------------------*/}
 
-        #ranking tr td:first-child,#ranking tr th:first-child{
-          
-          border-right: #fff solid 0.1rem;
-        }
-
-        .table tbody tr{
-          border-bottom: #fff 0.1rem;
-        }
-
-        .table tbody tr:last-child td{
-          border:none;
-        }
-
-        #table-section{
-          display:flex;
-          
-        }
-
-        #news tr{
-          
-          
-          
-        }
-
-
-
-      `}
-      </style>
-      {isAuthenticated ? <> <div style={{background: 'url(background.png)', backgroundPosition: 'center center',  height:"100vh"}}>
-      <section id="table-section">
-              <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-          </table>
-
-            <Table id="news" className="table">
-                <thead>
-                  <tr>
-                    <th>Noticias</th>
-
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <td>Godinez vive</td>
-                  </tr>
-
-                  <tr>
-                    <td>Godinez morre brutalmente</td>
-                  </tr>
-                </tbody>
-              </Table>
-        </section>
-      </div> </> : <> <div style={{marginTop: "100px"}}>You arent authenticated</div></>}
+      <Container>You arent authenticated</Container>
+      
+      </>}
       
     </Layout>
   )
 }
+
+const Container = styled.div`
+    height: 100vh;
+    /* display: flex;
+    justify-content: center; */
+    /* align-items: center; */
+    /* width: 61.25rem;
+    margin: auto;
+    background-color: antiquewhite; */
+`

@@ -58,6 +58,11 @@ const ContainerFooter = styled.footer`
         padding-right: 3rem;
         color: white;
         cursor: pointer;
+
+        &:hover {
+            color: #7b7fda;
+        }
+
         @media screen and (max-width: 500px){
             padding-bottom: 0.7rem;
             padding-right: 0px;
