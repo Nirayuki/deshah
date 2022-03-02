@@ -54,7 +54,7 @@ const ContainerNav = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background: #202020;
+  background: #181818;
   position: static;
   top: 0;
   left: 0;

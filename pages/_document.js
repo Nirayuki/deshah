@@ -25,6 +25,9 @@ export default class MyDocument extends Document {
         <Head>
           <title>My page</title>
           {/* Step 5: Output the styles in the head  */}
+          <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
+          <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet"></link>
           {this.props.styleTags}
         </Head>
         <body>
