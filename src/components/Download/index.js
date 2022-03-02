@@ -8,7 +8,7 @@ export default function Download(){
         <ContainerDownload> 
             <TextSection>
                 <span className='text-first'>
-                    Planos e Preços
+                    Planos e Preço
                 </span>
                 <span className='text-second'>
                     Na Deshah nos temos um teste Demo e também o jogo pago aonde temos o melhor preço do mercado
